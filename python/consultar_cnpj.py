@@ -26,6 +26,22 @@ def main() -> None:
 
     empresa = consultar(cnpj, api_key)
     print(empresa["RazaoSocial"], "-", empresa["SituacaoCadastral"]["Descricao"])
+    print(resumo_sancoes(empresa))
+
+
+def resumo_sancoes(empresa: dict) -> str:
+    """Sanções e embargos (CGU e IBAMA): vêm em toda consulta nos planos pagos."""
+    sancoes = empresa.get("sancoes")
+    if sancoes is None:
+        if empresa.get("sancoes_disponivel_em"):
+            return "Sanções e embargos: disponível nos planos pagos"
+        return "Sanções e embargos: não foi possível verificar agora"
+    if not sancoes["possui_registros"]:
+        return "Sanções e embargos: nada consta"
+    linhas = [f"Sanções e embargos: {len(sancoes['itens'])} registro(s)"]
+    for item in sancoes["itens"]:
+        linhas.append(f"  {item['fonte']}: {item['tipo']} (CNPJ {item['cnpj_registrado']})")
+    return "\n".join(linhas)
 
 
 if __name__ == "__main__":

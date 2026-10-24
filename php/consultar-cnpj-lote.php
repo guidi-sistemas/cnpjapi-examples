@@ -30,9 +30,9 @@ if ($status !== 200) {
 }
 
 foreach (json_decode($body, true) as $item) {
-    if ($item['status'] === 'encontrado') {
-        echo $item['cnpj'], ' - ', $item['dados']['RazaoSocial'], PHP_EOL;
+    if ($item['Status'] === 'encontrado') {
+        echo $item['Cnpj'], ' - ', $item['Dados']['RazaoSocial'], PHP_EOL;
     } else {
-        echo $item['cnpj'], ' - ', $item['status'], PHP_EOL;
+        echo $item['Cnpj'], ' - ', $item['Status'], PHP_EOL;
     }
 }

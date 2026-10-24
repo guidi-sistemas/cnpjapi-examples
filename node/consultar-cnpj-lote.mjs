@@ -22,9 +22,9 @@ if (!resposta.ok) {
 
 const itens = await resposta.json();
 for (const item of itens) {
-  if (item.status === "encontrado") {
-    console.log(item.cnpj, "-", item.dados.RazaoSocial);
+  if (item.Status === "encontrado") {
+    console.log(item.Cnpj, "-", item.Dados.RazaoSocial);
   } else {
-    console.log(item.cnpj, "-", item.status);
+    console.log(item.Cnpj, "-", item.Status);
   }
 }

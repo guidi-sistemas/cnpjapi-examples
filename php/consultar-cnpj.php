@@ -25,3 +25,18 @@ if ($status !== 200) {
 
 $empresa = json_decode($body, true);
 echo $empresa['RazaoSocial'], ' - ', $empresa['SituacaoCadastral']['Descricao'], PHP_EOL;
+
+// Sanções e embargos (CGU e IBAMA): vêm em toda consulta nos planos pagos.
+$sancoes = $empresa['sancoes'] ?? null;
+if ($sancoes === null) {
+    echo isset($empresa['sancoes_disponivel_em'])
+        ? 'Sanções e embargos: disponível nos planos pagos'
+        : 'Sanções e embargos: não foi possível verificar agora', PHP_EOL;
+} elseif (!$sancoes['possui_registros']) {
+    echo 'Sanções e embargos: nada consta', PHP_EOL;
+} else {
+    echo 'Sanções e embargos: ', count($sancoes['itens']), ' registro(s)', PHP_EOL;
+    foreach ($sancoes['itens'] as $item) {
+        echo "  {$item['fonte']}: {$item['tipo']} (CNPJ {$item['cnpj_registrado']})", PHP_EOL;
+    }
+}

@@ -42,9 +42,13 @@ Cada exemplo aceita um CNPJ como argumento (ou usa um de teste por padrão) e im
 | Go | [`go/main.go`](go/main.go) | `cd go && go run main.go 00776574000156` |
 | Java | [`java/ConsultarCnpj.java`](java/ConsultarCnpj.java) | `java java/ConsultarCnpj.java 00776574000156` |
 
+## Sanções e embargos (plano pago)
+
+Nos planos pagos, toda consulta traz o campo `sancoes`: se a empresa consta no CEIS, no CNEP, no CEPIM, nos acordos de leniência da CGU ou nos embargos do IBAMA, casando pela raiz do CNPJ (matriz e filiais). Os exemplos de consulta simples imprimem um resumo; no plano gratuito vem `"sancoes": null` com `"sancoes_disponivel_em": "planos_pagos"`. Veja o [guia](https://cnpjapi.com.br/guias/verificar-sancoes-cnpj).
+
 ## Consultar em lote (plano pago)
 
-Tem um plano pago? `POST /consulta/lote` consulta até **20 CNPJs numa só chamada** (conta como 1 requisição pro rate limit). Cada exemplo abaixo aceita uma lista de CNPJs separada por vírgula (ou usa 3 de teste por padrão, ilustrando os status `encontrado`/`nao_encontrado`/`invalido`). Veja a [referência completa](https://cnpjapi.com.br/docs/consulta-lote).
+Tem um plano pago? `POST /consulta/lote` consulta até **20 CNPJs numa só chamada** (conta como 1 requisição pro rate limit). Cada exemplo abaixo aceita uma lista de CNPJs separada por vírgula (ou usa 3 de teste por padrão, ilustrando os status `encontrado`/`nao_encontrado`/`invalido`). Cada item vem como `{ "Cnpj", "Status", "Dados" }`, com os nomes em PascalCase. Veja a [referência completa](https://cnpjapi.com.br/docs/consulta-lote).
 
 | Linguagem | Arquivo | Rodar |
 |---|---|---|

@@ -18,11 +18,11 @@ type corpoLote struct {
 }
 
 type itemLote struct {
-	Cnpj   string `json:"cnpj"`
-	Status string `json:"status"`
+	Cnpj   string `json:"Cnpj"`
+	Status string `json:"Status"`
 	Dados  *struct {
 		RazaoSocial string `json:"RazaoSocial"`
-	} `json:"dados"`
+	} `json:"Dados"`
 }
 
 func main() {
