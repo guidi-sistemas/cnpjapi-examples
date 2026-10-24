@@ -7,4 +7,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <!-- ie/ e lote/ são projetos próprios: sem isto, o build da raiz compila os arquivos
+       deles junto e falha (mais de um arquivo com instruções de nível superior). -->
+  <ItemGroup>
+    <Compile Remove="ie/**;lote/**" />
+  </ItemGroup>
+
 </Project>

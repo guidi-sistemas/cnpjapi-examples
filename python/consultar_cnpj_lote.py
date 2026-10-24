@@ -28,10 +28,10 @@ def main() -> None:
     api_key = os.environ.get("CNPJAPI_KEY", "cnpj_sua_chave")
 
     for item in consultar_lote(cnpjs, api_key):
-        if item["status"] == "encontrado":
-            print(item["cnpj"], "-", item["dados"]["RazaoSocial"])
+        if item["Status"] == "encontrado":
+            print(item["Cnpj"], "-", item["Dados"]["RazaoSocial"])
         else:
-            print(item["cnpj"], "-", item["status"])
+            print(item["Cnpj"], "-", item["Status"])
 
 
 if __name__ == "__main__":

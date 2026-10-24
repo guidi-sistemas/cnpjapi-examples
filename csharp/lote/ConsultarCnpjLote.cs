@@ -25,11 +25,11 @@ if (!resposta.IsSuccessStatusCode)
 using var doc = JsonDocument.Parse(await resposta.Content.ReadAsStringAsync());
 foreach (var item in doc.RootElement.EnumerateArray())
 {
-    var cnpj = item.GetProperty("cnpj").GetString();
-    var status = item.GetProperty("status").GetString();
+    var cnpj = item.GetProperty("Cnpj").GetString();
+    var status = item.GetProperty("Status").GetString();
     if (status == "encontrado")
     {
-        var razao = item.GetProperty("dados").GetProperty("RazaoSocial").GetString();
+        var razao = item.GetProperty("Dados").GetProperty("RazaoSocial").GetString();
         Console.WriteLine($"{cnpj} - {razao}");
     }
     else

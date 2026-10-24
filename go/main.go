@@ -15,6 +15,17 @@ type Empresa struct {
 	SituacaoCadastral struct {
 		Descricao string `json:"Descricao"`
 	} `json:"SituacaoCadastral"`
+	// Sanções e embargos (CGU e IBAMA): vêm em toda consulta nos planos pagos. nil no
+	// gratuito (sancoes_disponivel_em) ou quando não deu para verificar (sancoes_erro).
+	Sancoes *struct {
+		PossuiRegistros bool `json:"possui_registros"`
+		Itens           []struct {
+			Fonte          string `json:"fonte"`
+			Tipo           string `json:"tipo"`
+			CnpjRegistrado string `json:"cnpj_registrado"`
+		} `json:"itens"`
+	} `json:"sancoes"`
+	SancoesDisponivelEm string `json:"sancoes_disponivel_em"`
 }
 
 func main() {
@@ -46,4 +57,18 @@ func main() {
 	}
 
 	fmt.Println(empresa.RazaoSocial, "-", empresa.SituacaoCadastral.Descricao)
+
+	switch s := empresa.Sancoes; {
+	case s == nil && empresa.SancoesDisponivelEm != "":
+		fmt.Println("Sanções e embargos: disponível nos planos pagos")
+	case s == nil:
+		fmt.Println("Sanções e embargos: não foi possível verificar agora")
+	case !s.PossuiRegistros:
+		fmt.Println("Sanções e embargos: nada consta")
+	default:
+		fmt.Printf("Sanções e embargos: %d registro(s)\n", len(s.Itens))
+		for _, it := range s.Itens {
+			fmt.Printf("  %s: %s (CNPJ %s)\n", it.Fonte, it.Tipo, it.CnpjRegistrado)
+		}
+	}
 }
