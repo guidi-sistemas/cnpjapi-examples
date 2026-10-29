@@ -15,10 +15,10 @@ import (
 
 type RespostaIE struct {
 	Resultados []struct {
-		UF       string `json:"uf"`
-		IE       string `json:"ie"`
-		Situacao string `json:"situacao"`
-	} `json:"resultados"`
+		UF       string `json:"UF"`
+		IE       string `json:"IE"`
+		Situacao string `json:"Situacao"`
+	} `json:"Resultados"`
 }
 
 func main() {

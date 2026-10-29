@@ -44,7 +44,7 @@ Cada exemplo aceita um CNPJ como argumento (ou usa um de teste por padrão) e im
 
 ## Sanções e embargos (plano pago)
 
-Nos planos pagos, toda consulta traz o campo `sancoes`: se a empresa consta no CEIS, no CNEP, no CEPIM, nos acordos de leniência da CGU ou nos embargos do IBAMA, casando pela raiz do CNPJ (matriz e filiais). Os exemplos de consulta simples imprimem um resumo; no plano gratuito vem `"sancoes": null` com `"sancoes_disponivel_em": "planos_pagos"`. Veja o [guia](https://cnpjapi.com.br/guias/verificar-sancoes-cnpj).
+Nos planos pagos, toda consulta traz o campo `Sancoes`: se a empresa consta no CEIS, no CNEP, no CEPIM, nos acordos de leniência da CGU ou nos embargos do IBAMA, casando pela raiz do CNPJ (matriz e filiais). Os exemplos de consulta simples imprimem um resumo; no plano gratuito vem `"Sancoes": null` com `"SancoesDisponivelEm": "planos_pagos"`. Veja o [guia](https://cnpjapi.com.br/guias/verificar-sancoes-cnpj).
 
 ## Consultar em lote (plano pago)
 
@@ -61,7 +61,7 @@ Tem um plano pago? `POST /consulta/lote` consulta até **20 CNPJs numa só chama
 
 ## Consultar a Inscrição Estadual (IE) (plano premium)
 
-Tem um plano com **Inscrição Estadual**? `GET /consulta/ie/{cnpj}` retorna a IE de um CNPJ na **fonte oficial** da SEFAZ. Passe a **UF** como 2º argumento (1 crédito) ou omita para a varredura nacional (3 créditos). A resposta é `{ "cnpj": "...", "resultados": [ { "uf": "SP", "ie": "...", "situacao": "habilitado", ... } ] }`. Veja a [referência completa](https://cnpjapi.com.br/docs/consulta-ie).
+Tem um plano com **Inscrição Estadual**? `GET /consulta/ie/{cnpj}` retorna a IE de um CNPJ na **fonte oficial** da SEFAZ. Passe a **UF** como 2º argumento (1 crédito) ou omita para a varredura nacional (3 créditos). A resposta é `{ "CNPJ": "...", "Resultados": [ { "UF": "SP", "IE": "...", "Situacao": "habilitado", ... } ] }`. Veja a [referência completa](https://cnpjapi.com.br/docs/consulta-ie).
 
 | Linguagem | Arquivo | Rodar |
 |---|---|---|

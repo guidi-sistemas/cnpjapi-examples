@@ -19,11 +19,11 @@ if (!resposta.ok) {
   process.exit(1);
 }
 
-const { resultados } = await resposta.json();
+const { Resultados: resultados } = await resposta.json();
 if (resultados.length === 0) {
   console.log("Nenhuma inscricao estadual encontrada.");
 } else {
   for (const ie of resultados) {
-    console.log(`${ie.uf}: ${ie.ie || "(nao-contribuinte)"} - ${ie.situacao}`);
+    console.log(`${ie.UF}: ${ie.IE || "(nao-contribuinte)"} - ${ie.Situacao}`);
   }
 }

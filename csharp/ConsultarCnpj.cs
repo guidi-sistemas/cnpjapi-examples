@@ -25,22 +25,22 @@ var situacao = raiz.GetProperty("SituacaoCadastral").GetProperty("Descricao").Ge
 Console.WriteLine($"{razao} - {situacao}");
 
 // Sanções e embargos (CGU e IBAMA): vêm em toda consulta nos planos pagos.
-if (!raiz.TryGetProperty("sancoes", out var sancoes) || sancoes.ValueKind == JsonValueKind.Null)
+if (!raiz.TryGetProperty("Sancoes", out var sancoes) || sancoes.ValueKind == JsonValueKind.Null)
 {
-    Console.WriteLine(raiz.TryGetProperty("sancoes_disponivel_em", out _)
+    Console.WriteLine(raiz.TryGetProperty("SancoesDisponivelEm", out _)
         ? "Sanções e embargos: disponível nos planos pagos"
         : "Sanções e embargos: não foi possível verificar agora");
 }
-else if (!sancoes.GetProperty("possui_registros").GetBoolean())
+else if (!sancoes.GetProperty("PossuiRegistros").GetBoolean())
 {
     Console.WriteLine("Sanções e embargos: nada consta");
 }
 else
 {
-    var itens = sancoes.GetProperty("itens");
+    var itens = sancoes.GetProperty("Itens");
     Console.WriteLine($"Sanções e embargos: {itens.GetArrayLength()} registro(s)");
     foreach (var item in itens.EnumerateArray())
     {
-        Console.WriteLine($"  {item.GetProperty("fonte").GetString()}: {item.GetProperty("tipo").GetString()} (CNPJ {item.GetProperty("cnpj_registrado").GetString()})");
+        Console.WriteLine($"  {item.GetProperty("Fonte").GetString()}: {item.GetProperty("Tipo").GetString()} (CNPJ {item.GetProperty("CNPJRegistrado").GetString()})");
     }
 }

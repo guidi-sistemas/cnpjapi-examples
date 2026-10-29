@@ -3,7 +3,7 @@
 // Uso: CNPJAPI_KEY=cnpj_sua_chave java ConsultarIe.java 00776574000156 SP
 //      (a UF e opcional; sem ela, faz a varredura nacional)
 //
-// A resposta e JSON com { cnpj, fonte, cache_hit, as_of, resultados:[...] };
+// A resposta e JSON com { CNPJ, Fonte, DoCache, ConsultadoEm, Resultados:[...] };
 // aqui imprimimos o corpo cru. Para mapear em objetos, use uma lib JSON (Jackson, Gson).
 
 import java.net.URI;

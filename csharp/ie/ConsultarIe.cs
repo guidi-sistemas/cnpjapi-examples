@@ -28,7 +28,7 @@ if (!resposta.IsSuccessStatusCode)
 }
 
 using var doc = JsonDocument.Parse(await resposta.Content.ReadAsStringAsync());
-var resultados = doc.RootElement.GetProperty("resultados");
+var resultados = doc.RootElement.GetProperty("Resultados");
 
 if (resultados.GetArrayLength() == 0)
 {
@@ -38,7 +38,7 @@ if (resultados.GetArrayLength() == 0)
 
 foreach (var ie in resultados.EnumerateArray())
 {
-    var numero = ie.GetProperty("ie").GetString();
+    var numero = ie.GetProperty("IE").GetString();
     if (string.IsNullOrEmpty(numero)) numero = "(nao-contribuinte)";
-    Console.WriteLine($"{ie.GetProperty("uf").GetString()}: {numero} - {ie.GetProperty("situacao").GetString()}");
+    Console.WriteLine($"{ie.GetProperty("UF").GetString()}: {numero} - {ie.GetProperty("Situacao").GetString()}");
 }
