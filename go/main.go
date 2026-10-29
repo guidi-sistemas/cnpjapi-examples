@@ -16,16 +16,16 @@ type Empresa struct {
 		Descricao string `json:"Descricao"`
 	} `json:"SituacaoCadastral"`
 	// Sanções e embargos (CGU e IBAMA): vêm em toda consulta nos planos pagos. nil no
-	// gratuito (sancoes_disponivel_em) ou quando não deu para verificar (sancoes_erro).
+	// gratuito (SancoesDisponivelEm) ou quando não deu para verificar (SancoesErro).
 	Sancoes *struct {
-		PossuiRegistros bool `json:"possui_registros"`
+		PossuiRegistros bool `json:"PossuiRegistros"`
 		Itens           []struct {
-			Fonte          string `json:"fonte"`
-			Tipo           string `json:"tipo"`
-			CnpjRegistrado string `json:"cnpj_registrado"`
-		} `json:"itens"`
-	} `json:"sancoes"`
-	SancoesDisponivelEm string `json:"sancoes_disponivel_em"`
+			Fonte          string `json:"Fonte"`
+			Tipo           string `json:"Tipo"`
+			CnpjRegistrado string `json:"CNPJRegistrado"`
+		} `json:"Itens"`
+	} `json:"Sancoes"`
+	SancoesDisponivelEm string `json:"SancoesDisponivelEm"`
 }
 
 func main() {

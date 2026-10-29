@@ -31,11 +31,11 @@ if ($status !== 200) {
 }
 
 $dados = json_decode($body, true);
-if (empty($dados['resultados'])) {
+if (empty($dados['Resultados'])) {
     echo 'Nenhuma inscricao estadual encontrada.', PHP_EOL;
 } else {
-    foreach ($dados['resultados'] as $ie) {
-        $numero = $ie['ie'] !== '' ? $ie['ie'] : '(nao-contribuinte)';
-        echo "{$ie['uf']}: {$numero} - {$ie['situacao']}", PHP_EOL;
+    foreach ($dados['Resultados'] as $ie) {
+        $numero = $ie['IE'] !== '' ? $ie['IE'] : '(nao-contribuinte)';
+        echo "{$ie['UF']}: {$numero} - {$ie['Situacao']}", PHP_EOL;
     }
 }

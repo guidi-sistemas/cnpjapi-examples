@@ -29,12 +29,12 @@ def main() -> None:
     api_key = os.environ.get("CNPJAPI_KEY", "cnpj_sua_chave")
 
     dados = consultar_ie(cnpj, api_key, uf)
-    if not dados["resultados"]:
+    if not dados["Resultados"]:
         print("Nenhuma inscricao estadual encontrada.")
         return
-    for ie in dados["resultados"]:
-        numero = ie["ie"] or "(nao-contribuinte)"
-        print(f"{ie['uf']}: {numero} - {ie['situacao']}")
+    for ie in dados["Resultados"]:
+        numero = ie["IE"] or "(nao-contribuinte)"
+        print(f"{ie['UF']}: {numero} - {ie['Situacao']}")
 
 
 if __name__ == "__main__":

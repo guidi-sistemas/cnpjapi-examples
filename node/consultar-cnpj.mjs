@@ -18,18 +18,18 @@ const empresa = await resposta.json();
 console.log(empresa.RazaoSocial, "-", empresa.SituacaoCadastral.Descricao);
 
 // Sanções e embargos (CGU e IBAMA): vêm em toda consulta nos planos pagos.
-const { sancoes } = empresa;
+const { Sancoes: sancoes } = empresa;
 if (sancoes === null || sancoes === undefined) {
   console.log(
-    empresa.sancoes_disponivel_em
+    empresa.SancoesDisponivelEm
       ? "Sanções e embargos: disponível nos planos pagos"
       : "Sanções e embargos: não foi possível verificar agora",
   );
-} else if (!sancoes.possui_registros) {
+} else if (!sancoes.PossuiRegistros) {
   console.log("Sanções e embargos: nada consta");
 } else {
-  console.log(`Sanções e embargos: ${sancoes.itens.length} registro(s)`);
-  for (const item of sancoes.itens) {
-    console.log(`  ${item.fonte}: ${item.tipo} (CNPJ ${item.cnpj_registrado})`);
+  console.log(`Sanções e embargos: ${sancoes.Itens.length} registro(s)`);
+  for (const item of sancoes.Itens) {
+    console.log(`  ${item.Fonte}: ${item.Tipo} (CNPJ ${item.CNPJRegistrado})`);
   }
 }

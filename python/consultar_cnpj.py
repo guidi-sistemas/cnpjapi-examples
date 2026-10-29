@@ -31,16 +31,16 @@ def main() -> None:
 
 def resumo_sancoes(empresa: dict) -> str:
     """Sanções e embargos (CGU e IBAMA): vêm em toda consulta nos planos pagos."""
-    sancoes = empresa.get("sancoes")
+    sancoes = empresa.get("Sancoes")
     if sancoes is None:
-        if empresa.get("sancoes_disponivel_em"):
+        if empresa.get("SancoesDisponivelEm"):
             return "Sanções e embargos: disponível nos planos pagos"
         return "Sanções e embargos: não foi possível verificar agora"
-    if not sancoes["possui_registros"]:
+    if not sancoes["PossuiRegistros"]:
         return "Sanções e embargos: nada consta"
-    linhas = [f"Sanções e embargos: {len(sancoes['itens'])} registro(s)"]
-    for item in sancoes["itens"]:
-        linhas.append(f"  {item['fonte']}: {item['tipo']} (CNPJ {item['cnpj_registrado']})")
+    linhas = [f"Sanções e embargos: {len(sancoes['Itens'])} registro(s)"]
+    for item in sancoes["Itens"]:
+        linhas.append(f"  {item['Fonte']}: {item['Tipo']} (CNPJ {item['CNPJRegistrado']})")
     return "\n".join(linhas)
 
 
