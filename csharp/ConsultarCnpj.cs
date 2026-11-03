@@ -10,7 +10,7 @@ string apiKey = Environment.GetEnvironmentVariable("CNPJAPI_KEY") ?? "cnpj_sua_c
 using var http = new HttpClient();
 http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-using var resposta = await http.GetAsync($"https://api.cnpjapi.com.br/{cnpj}");
+using var resposta = await http.GetAsync($"https://api.cnpjapi.com.br/{cnpj}?incluir=sancoes");
 
 if (!resposta.IsSuccessStatusCode)
 {

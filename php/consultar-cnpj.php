@@ -7,7 +7,7 @@
 $cnpj = $argv[1] ?? '00776574000156';
 $apiKey = getenv('CNPJAPI_KEY') ?: 'cnpj_sua_chave';
 
-$ch = curl_init("https://api.cnpjapi.com.br/{$cnpj}");
+$ch = curl_init("https://api.cnpjapi.com.br/{$cnpj}?incluir=sancoes");
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => ["Authorization: Bearer {$apiKey}"],

@@ -38,7 +38,7 @@ func main() {
 		apiKey = "cnpj_sua_chave"
 	}
 
-	req, _ := http.NewRequest(http.MethodGet, "https://api.cnpjapi.com.br/"+cnpj, nil)
+	req, _ := http.NewRequest(http.MethodGet, "https://api.cnpjapi.com.br/"+cnpj+"?incluir=sancoes", nil)
 	req.Header.Set("Authorization", "Bearer "+apiKey)
 
 	resp, err := http.DefaultClient.Do(req)

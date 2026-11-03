@@ -12,7 +12,7 @@ import requests
 
 def consultar(cnpj: str, api_key: str) -> dict:
     resposta = requests.get(
-        f"https://api.cnpjapi.com.br/{cnpj}",
+        f"https://api.cnpjapi.com.br/{cnpj}?incluir=sancoes",
         headers={"Authorization": f"Bearer {api_key}"},
         timeout=10,
     )

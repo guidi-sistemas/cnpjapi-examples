@@ -44,7 +44,7 @@ Cada exemplo aceita um CNPJ como argumento (ou usa um de teste por padrão) e im
 
 ## Sanções e embargos (plano pago)
 
-Nos planos pagos, toda consulta traz o campo `Sancoes`: se a empresa consta no CEIS, no CNEP, no CEPIM, nos acordos de leniência da CGU ou nos embargos do IBAMA, casando pela raiz do CNPJ (matriz e filiais). Os exemplos de consulta simples imprimem um resumo; no plano gratuito vem `"Sancoes": null` com `"SancoesDisponivelEm": "planos_pagos"`. Veja o [guia](https://cnpjapi.com.br/guias/verificar-sancoes-cnpj).
+Nos planos pagos, a consulta pedida com `?incluir=sancoes` traz o campo `Sancoes` (também há `divida` e `parcelamentos`, combináveis: `?incluir=sancoes,divida,parcelamentos`; sem o parâmetro, a resposta traz só o cadastro). O campo diz se a empresa consta no CEIS, no CNEP, no CEPIM, nos acordos de leniência da CGU ou nos embargos do IBAMA, casando pela raiz do CNPJ (matriz e filiais). Os exemplos de consulta simples imprimem um resumo; no plano gratuito vem `"Sancoes": null` com `"SancoesDisponivelEm": "planos_pagos"`. Veja o [guia](https://cnpjapi.com.br/guias/verificar-sancoes-cnpj).
 
 ## Consultar em lote (plano pago)
 
