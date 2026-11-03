@@ -63,6 +63,8 @@ Tem um plano pago? `POST /consulta/lote` consulta até **20 CNPJs numa só chama
 
 Tem um plano com **Inscrição Estadual**? `GET /consulta/ie/{cnpj}` retorna a IE de um CNPJ na **fonte oficial** da SEFAZ. Passe a **UF** como 2º argumento (1 crédito) ou omita para a varredura nacional (3 créditos). A resposta é `{ "CNPJ": "...", "Resultados": [ { "UF": "SP", "IE": "...", "Situacao": "habilitado", ... } ] }`. Veja a [referência completa](https://cnpjapi.com.br/docs/consulta-ie).
 
+Só tem o CNPJ e não sabe a UF? Use a consulta de CNPJ com a IE junto: `GET /{cnpj}?incluir=ie&ie_uf=auto` devolve o cadastro e a IE da UF do endereço da empresa, por 1 crédito, numa chamada só (campos `InscricoesEstaduais` e `InscricoesEstaduaisUF`). Veja [Consultar um CNPJ](https://cnpjapi.com.br/docs/consulta-cnpj).
+
 | Linguagem | Arquivo | Rodar |
 |---|---|---|
 | Python | [`python/consultar_ie.py`](python/consultar_ie.py) | `python python/consultar_ie.py 00776574000156 SP` |
