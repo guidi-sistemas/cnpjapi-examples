@@ -5,7 +5,7 @@
 const cnpj = process.argv[2] ?? "00776574000156";
 const apiKey = process.env.CNPJAPI_KEY ?? "cnpj_sua_chave";
 
-const resposta = await fetch(`https://api.cnpjapi.com.br/${cnpj}`, {
+const resposta = await fetch(`https://api.cnpjapi.com.br/${cnpj}?incluir=sancoes`, {
   headers: { Authorization: `Bearer ${apiKey}` },
 });
 
